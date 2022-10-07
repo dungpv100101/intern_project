@@ -1,9 +1,7 @@
 package com.example.demo_keycloak_security_final.entity;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;

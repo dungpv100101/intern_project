@@ -4,12 +4,10 @@ import com.example.demo_keycloak_security_final.dto.request.command.popup.Update
 import com.example.demo_keycloak_security_final.dto.response.command.popup.UpdatePopupResponseData;
 import com.example.demo_keycloak_security_final.entity.Button;
 import com.example.demo_keycloak_security_final.entity.Popup;
-import com.example.demo_keycloak_security_final.exception.ApplicationException;
 import com.example.demo_keycloak_security_final.handler.command.CommandHandler;
 import com.example.demo_keycloak_security_final.service.command.popup.PopupCommandService;
 import com.example.demo_keycloak_security_final.service.query.button.ButtonQueryService;
 import com.example.demo_keycloak_security_final.service.query.popup.PopupQueryService;
-import com.example.demo_keycloak_security_final.util.ExceptionCode;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

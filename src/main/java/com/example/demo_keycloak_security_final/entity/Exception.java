@@ -1,7 +1,6 @@
 package com.example.demo_keycloak_security_final.entity;
 
 import lombok.*;
-import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import java.io.Serializable;

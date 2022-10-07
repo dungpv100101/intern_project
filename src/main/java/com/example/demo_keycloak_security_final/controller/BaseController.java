@@ -5,8 +5,6 @@ import com.example.demo_keycloak_security_final.dto.response.BaseResponse;
 import com.example.demo_keycloak_security_final.dto.response.ResponseData;
 import com.example.demo_keycloak_security_final.handler.HandlerManagement;
 import com.example.demo_keycloak_security_final.handler.IHandler;
-import lombok.AllArgsConstructor;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

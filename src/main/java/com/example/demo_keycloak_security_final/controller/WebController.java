@@ -7,7 +7,6 @@ import com.example.demo_keycloak_security_final.dto.response.BaseResponse;
 import com.example.demo_keycloak_security_final.dto.response.command.RegisterResponseData;
 import com.example.demo_keycloak_security_final.dto.response.query.GetUserResponseData;
 import com.example.demo_keycloak_security_final.dto.response.query.LoginResponseData;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

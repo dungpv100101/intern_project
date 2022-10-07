@@ -3,14 +3,12 @@ package com.example.demo_keycloak_security_final.controller;
 import com.example.demo_keycloak_security_final.dto.request.command.popup.CreatePopupRequestData;
 import com.example.demo_keycloak_security_final.dto.request.command.popup.DeletePopupRequestData;
 import com.example.demo_keycloak_security_final.dto.request.command.popup.UpdatePopupRequestData;
-import com.example.demo_keycloak_security_final.dto.request.query.FindExceptionRequestData;
 import com.example.demo_keycloak_security_final.dto.request.query.FindPopupRequestData;
 import com.example.demo_keycloak_security_final.dto.response.BaseResponse;
 import com.example.demo_keycloak_security_final.dto.response.command.popup.CreatePopupResponseData;
 import com.example.demo_keycloak_security_final.dto.response.command.popup.DeletePopupResponseData;
 import com.example.demo_keycloak_security_final.dto.response.command.popup.UpdatePopupResponseData;
 import com.example.demo_keycloak_security_final.dto.response.query.FindPopupResponseData;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

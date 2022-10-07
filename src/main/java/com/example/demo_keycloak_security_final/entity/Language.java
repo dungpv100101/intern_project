@@ -1,7 +1,5 @@
 package com.example.demo_keycloak_security_final.entity;
 
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

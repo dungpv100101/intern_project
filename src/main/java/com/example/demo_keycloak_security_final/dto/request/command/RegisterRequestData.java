@@ -1,7 +1,5 @@
 package com.example.demo_keycloak_security_final.dto.request.command;
 
-import com.example.demo_keycloak_security_final.entity.UserInfo;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 

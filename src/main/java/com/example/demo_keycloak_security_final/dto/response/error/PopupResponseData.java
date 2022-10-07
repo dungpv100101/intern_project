@@ -1,6 +1,5 @@
 package com.example.demo_keycloak_security_final.dto.response.error;
 
-import com.example.demo_keycloak_security_final.dto.response.ErrorResponse;
 import com.example.demo_keycloak_security_final.dto.response.ResponseData;
 import lombok.*;
 
