@@ -1,6 +1,5 @@
 package com.example.demo_keycloak_security_final.repository.redis.impl;
 
-import com.example.demo_keycloak_security_final.dto.redis.ExceptionCacheKey;
 import com.example.demo_keycloak_security_final.entity.Exception;
 import com.example.demo_keycloak_security_final.repository.redis.RedisRepository;
 import com.example.demo_keycloak_security_final.util.StringUtil;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @AllArgsConstructor
 public class ExceptionRedisRepository implements RedisRepository<String, Exception> {
+
     private final RedisTemplate redisTemplate;
     private final String EXCEPTION_KEY = "exceptions";
 

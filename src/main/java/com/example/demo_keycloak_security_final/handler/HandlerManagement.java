@@ -6,10 +6,12 @@ import com.example.demo_keycloak_security_final.dto.request.query.QueryRequestDa
 import com.example.demo_keycloak_security_final.handler.command.CommandHandler;
 import com.example.demo_keycloak_security_final.handler.query.QueryHandler;
 import lombok.NoArgsConstructor;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ClassUtils;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.ParameterizedType;
@@ -44,30 +46,31 @@ public class HandlerManagement implements ApplicationContextAware {
 
     private void initCommandHandlerMap() {
         Map<String, CommandHandler> handles = context.getBeansOfType(CommandHandler.class);
-
         handles.forEach((key, value) -> {
-            CommandHandler handle = value;
+            Class<CommandHandler> temp = (Class<CommandHandler>) ClassUtils.getUserClass(value);
 
-            String requestBeanName = ((ParameterizedType) handle.getClass().getGenericSuperclass())
+            String requestBeanName = ((ParameterizedType) temp.getGenericSuperclass())
                     .getActualTypeArguments()[0]
                     .getTypeName();
+
             Class request = getClassByName(requestBeanName);
 
-            COMMAND_HANDLER_MAP.put(request, handle);
+            COMMAND_HANDLER_MAP.put(request, value);
         });
     }
 
     private void initQueryHandlerMap() {
         Map<String, QueryHandler> handles = context.getBeansOfType(QueryHandler.class);
         handles.forEach((key, value) -> {
-            QueryHandler handle = value;
+            Class<QueryHandler> temp = (Class<QueryHandler>) ClassUtils.getUserClass(value);
 
-            String requestBeanName = ((ParameterizedType) handle.getClass().getGenericSuperclass())
+            String requestBeanName = ((ParameterizedType) temp.getGenericSuperclass())
                     .getActualTypeArguments()[0]
                     .getTypeName();
+
             Class request = getClassByName(requestBeanName);
 
-            QUERY_HANDLER_MAP.put(request, handle);
+            QUERY_HANDLER_MAP.put(request, value);
         });
     }
 
