@@ -2,6 +2,7 @@ package com.example.demo_keycloak_security_final.service.keycloak;
 
 import com.example.demo_keycloak_security_final.config.KeycloakConfiguration;
 import com.example.demo_keycloak_security_final.exception.ApplicationException;
+import com.example.demo_keycloak_security_final.util.ExceptionCode;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.representations.AccessTokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class KeycloakKeycloakUserService implements KeycloakUserService {
         try {
             return keycloak.tokenManager().getAccessToken();
         } catch (Exception e) {
-            throw new ApplicationException(401L);
+            throw new ApplicationException(ExceptionCode.LOGIN_ERROR);
         }
     }
 }

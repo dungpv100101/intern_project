@@ -1,8 +1,10 @@
 package com.example.demo_keycloak_security_final.service.keycloak;
 
 import com.example.demo_keycloak_security_final.config.KeycloakConfiguration;
+import com.example.demo_keycloak_security_final.constants.KeycloakConstants;
 import com.example.demo_keycloak_security_final.entity.UserInfo;
 import com.example.demo_keycloak_security_final.exception.ApplicationException;
+import com.example.demo_keycloak_security_final.util.ExceptionCode;
 import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.RealmResource;
@@ -29,14 +31,14 @@ public class KeycloakKeycloakAdminService implements KeycloakAdminService {
         Keycloak kc = getAdmin();
 
         if (kc.realm(keycloakConfiguration.getRealmUser()).users().search(user.getUsername()).size() > 0) {
-            throw new ApplicationException(409L);
+            throw new ApplicationException(ExceptionCode.AVAILABLE);
         }
 
         Response result = kc.realm(keycloakConfiguration.getRealmUser())
                 .users()
                 .create(getUserRepresentation(user));
 
-        setUserRole(kc, CreatedResponseUtil.getCreatedId(result), "user");
+        setUserRole(kc, CreatedResponseUtil.getCreatedId(result), KeycloakConstants.USER_ROLE);
 
         return result;
     }
@@ -50,13 +52,13 @@ public class KeycloakKeycloakAdminService implements KeycloakAdminService {
         userRepresentation.setUsername(user.getUsername());
         userRepresentation.setCredentials(Arrays.asList(credential));
         userRepresentation.setEnabled(true);
-        userRepresentation.setRealmRoles(Arrays.asList("user"));
+        userRepresentation.setRealmRoles(Arrays.asList(KeycloakConstants.USER_ROLE));
         userRepresentation.setFirstName(user.getFirstName());
         userRepresentation.setLastName(user.getLastName());
         userRepresentation.setEmail(user.getEmail());
 
         Map<String, List<String>> attributes = new HashMap<>();
-        attributes.put("phone", Arrays.asList(user.getPhone()));
+        attributes.put(KeycloakConstants.PHONE_ATTRIBUTE, Arrays.asList(user.getPhone()));
 
         userRepresentation.setAttributes(attributes);
 
@@ -86,7 +88,7 @@ public class KeycloakKeycloakAdminService implements KeycloakAdminService {
         try {
             userRepresentation = userResource.toRepresentation();
         } catch (Exception e) {
-            throw new ApplicationException(404L);
+            throw new ApplicationException(ExceptionCode.NOT_FOUND);
         }
 
         UserInfo userInfo = UserInfo.builder()
@@ -94,7 +96,7 @@ public class KeycloakKeycloakAdminService implements KeycloakAdminService {
                 .firstName(userRepresentation.getFirstName())
                 .lastName(userRepresentation.getLastName())
                 .email(userRepresentation.getEmail())
-                .phone(userRepresentation.firstAttribute("phone"))
+                .phone(userRepresentation.firstAttribute(KeycloakConstants.PHONE_ATTRIBUTE))
                 .build();
 
         return userInfo;
