@@ -25,7 +25,7 @@ public class ExceptionRedisRepository implements RedisRepository<String, Excepti
     }
 
     @Override
-    public void put(Exception value) {
-        redisTemplate.opsForValue().set(EXCEPTION_KEY + StringUtil.COLON_CHARACTER + value.getCode(), value);
+    public void put(String key, Exception value) {
+        redisTemplate.opsForValue().set(EXCEPTION_KEY + StringUtil.COLON_CHARACTER + key, value);
     }
 }

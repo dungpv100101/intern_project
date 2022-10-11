@@ -18,9 +18,9 @@ public abstract class BaseController {
 
         BaseResponse<T> baseResponse = new BaseResponse<>();
 
-        baseResponse.setResponseCode(200);
+        baseResponse.setResponseCode(HttpStatus.OK.value());
         baseResponse.setResponseData(response);
-        baseResponse.setMessage("success");
+        baseResponse.setMessage(HttpStatus.OK.name());
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
 

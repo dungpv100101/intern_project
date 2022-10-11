@@ -24,10 +24,14 @@ public class ExceptionRedisServiceImpl implements RedisService<ExceptionCacheKey
 
     @Override
     public void put(Exception value) {
-        exceptionRedisRepository.put(value);
+        exceptionRedisRepository.put(getKey(value), value);
     }
 
-    private String getKey(ExceptionCacheKey key) {
+    @Override
+    public String getKey(ExceptionCacheKey key) {
         return key.getCode().toString();
+    }
+    public String getKey(Exception value) {
+        return value.getCode().toString();
     }
 }

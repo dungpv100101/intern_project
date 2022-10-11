@@ -40,7 +40,7 @@ public class PopupController extends BaseController{
         return getResponseEntity(new DeletePopupRequestData(id));
     }
 
-    @DeleteMapping("/{lang}/{id}")
+    @DeleteMapping("")
     public ResponseEntity<BaseResponse<DeletePopupResponseData>> deleteByExceptionCodeAndLangCode(
             @RequestParam(name = "lang") String langCode,
             @RequestParam(name = "id") Long exceptionCode) {

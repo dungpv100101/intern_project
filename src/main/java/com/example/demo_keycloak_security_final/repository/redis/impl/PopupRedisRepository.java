@@ -24,13 +24,11 @@ public class PopupRedisRepository implements RedisRepository<String, Popup> {
     }
 
     @Override
-    public void put(Popup value) {
+    public void put(String key, Popup value) {
         redisTemplate.opsForValue().set(
                 POPUP_KEY
                         + StringUtil.COLON_CHARACTER
-                        + value.getExceptionCode()
-                        + StringUtil.COMMA_CHARACTER
-                        + value.getLangCode()
+                        + key
                 , value);
     }
 }

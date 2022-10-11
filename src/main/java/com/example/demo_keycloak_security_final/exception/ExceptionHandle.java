@@ -33,7 +33,6 @@ public class ExceptionHandle {
         return baseResponse;
     }
 
-    //TODO: logic này nằm trong service
     private PopupResponseData getPopupResponseData(ApplicationException e) {
         String langCode = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 

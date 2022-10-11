@@ -1,18 +1,13 @@
 package com.example.demo_keycloak_security_final.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "language")
-@Getter
-@Setter
+@Data
 public class Language implements Serializable {
 
     @Id

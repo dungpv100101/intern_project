@@ -1,15 +1,13 @@
 package com.example.demo_keycloak_security_final.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="button")
-@Getter
-@Setter
+@Data
 public class Button implements Serializable {
 
     @Id

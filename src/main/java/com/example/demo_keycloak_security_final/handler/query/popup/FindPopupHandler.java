@@ -14,11 +14,7 @@ public class FindPopupHandler extends QueryHandler<FindPopupRequestData, FindPop
     private final PopupQueryServiceImpl popupQueryService;
     @Override
     public FindPopupResponseData handle(FindPopupRequestData request) {
-        Popup popup = getPopup(request);
-
-        return FindPopupResponseData.builder()
-                .popup(popup)
-                .build();
+        return new FindPopupResponseData(getPopup(request));
     }
 
     private Popup getPopup(FindPopupRequestData request) {

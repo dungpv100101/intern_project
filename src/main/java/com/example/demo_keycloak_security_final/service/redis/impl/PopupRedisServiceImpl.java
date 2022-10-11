@@ -25,10 +25,14 @@ public class PopupRedisServiceImpl implements RedisService<PopupCacheKey, Popup>
 
     @Override
     public void put(Popup value) {
-        popupRedisRepository.put(value);
+        popupRedisRepository.put(getKey(value), value);
     }
 
-    private String getKey(PopupCacheKey key) {
+    @Override
+    public String getKey(PopupCacheKey key) {
         return key.getExceptionCode() + StringUtil.COMMA_CHARACTER + key.getLangCode();
+    }
+    public String getKey(Popup value) {
+        return value.getExceptionCode() + StringUtil.COMMA_CHARACTER + value.getLangCode();
     }
 }

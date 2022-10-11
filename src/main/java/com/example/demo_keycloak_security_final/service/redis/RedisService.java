@@ -6,4 +6,5 @@ public interface RedisService<K extends CacheKey, V>{
     V get(K key);
     void delete(K key);
     void put(V value);
+    String getKey(K key);
 }
