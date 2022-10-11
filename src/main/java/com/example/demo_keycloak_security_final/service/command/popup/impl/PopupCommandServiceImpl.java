@@ -4,9 +4,8 @@ import com.example.demo_keycloak_security_final.dto.redis.PopupCacheKey;
 import com.example.demo_keycloak_security_final.entity.Popup;
 import com.example.demo_keycloak_security_final.exception.ApplicationException;
 import com.example.demo_keycloak_security_final.repository.command.popup.PopupCommandRepository;
-import com.example.demo_keycloak_security_final.repository.query.exception.ExceptionQueryRepository;
-import com.example.demo_keycloak_security_final.repository.query.popup.PopupQueryRepository;
 import com.example.demo_keycloak_security_final.service.command.popup.PopupCommandService;
+import com.example.demo_keycloak_security_final.service.query.exception.ExceptionQueryService;
 import com.example.demo_keycloak_security_final.service.redis.RedisService;
 import com.example.demo_keycloak_security_final.util.ExceptionCode;
 import lombok.AllArgsConstructor;
@@ -17,9 +16,15 @@ import org.springframework.stereotype.Service;
 public class PopupCommandServiceImpl implements PopupCommandService {
     private final PopupCommandRepository popupCommandRepository;
     private final RedisService<PopupCacheKey, Popup> popupRedisService;
+    private final ExceptionQueryService exceptionQueryService;
 
     @Override
     public Popup create(Popup entity) {
+        if (!exceptionQueryService.existsById(entity.getExceptionCode())) {
+            //Throw exception code not exist exception
+            throw new ApplicationException(ExceptionCode.UNKNOWN_ERROR);
+        }
+
         return popupCommandRepository.save(entity);
     }
 

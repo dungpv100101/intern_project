@@ -25,8 +25,6 @@ public class UpdateExceptionHandler extends CommandHandler<UpdateExceptionReques
         fromDB.setCode(exception.getCode());
         fromDB.setDescription(exception.getDescription());
 
-        return UpdateExceptionResponseData.builder()
-                .exception(exceptionCommandService.update(fromDB))
-                .build();
+        return new UpdateExceptionResponseData(exceptionCommandService.update(fromDB));
     }
 }

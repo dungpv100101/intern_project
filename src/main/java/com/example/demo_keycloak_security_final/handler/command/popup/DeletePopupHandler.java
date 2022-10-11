@@ -15,8 +15,6 @@ public class DeletePopupHandler extends CommandHandler<DeletePopupRequestData, D
     public DeletePopupResponseData handle(DeletePopupRequestData request) {
         int numberOfRowDeleted = popupCommandService.deleteByExceptionCodeAndLangCode(request.getExceptionCode(), request.getLangCode());
 
-        return DeletePopupResponseData.builder()
-                .numberOfRowDeleted(Long.valueOf(numberOfRowDeleted))
-                .build();
+        return new DeletePopupResponseData(numberOfRowDeleted);
     }
 }

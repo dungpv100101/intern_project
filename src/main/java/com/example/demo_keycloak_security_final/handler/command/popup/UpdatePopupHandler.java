@@ -33,8 +33,7 @@ public class UpdatePopupHandler extends CommandHandler<UpdatePopupRequestData, U
 
         Popup result = popupCommandService.update(popupFromDB);
 
-        return UpdatePopupResponseData.builder()
-                .popup(result).build();
+        return new UpdatePopupResponseData(result);
     }
 
     private Popup getPopup(UpdatePopupRequestData request) {

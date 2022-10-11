@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class FindPopupHandler extends QueryHandler<FindPopupRequestData, FindPopupResponseData> {
     private final PopupQueryServiceImpl popupQueryService;
-
     @Override
     public FindPopupResponseData handle(FindPopupRequestData request) {
         Popup popup = getPopup(request);
