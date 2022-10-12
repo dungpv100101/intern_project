@@ -9,7 +9,6 @@ import java.io.Serializable;
 @Table(name = "exception")
 @Data
 public class Exception implements Serializable {
-
     @Id
     private Long code;
 

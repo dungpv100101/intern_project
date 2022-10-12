@@ -16,15 +16,9 @@ import org.springframework.stereotype.Service;
 public class PopupCommandServiceImpl implements PopupCommandService {
     private final PopupCommandRepository popupCommandRepository;
     private final RedisService<PopupCacheKey, Popup> popupRedisService;
-    private final ExceptionQueryService exceptionQueryService;
 
     @Override
     public Popup create(Popup entity) {
-        if (!exceptionQueryService.existsById(entity.getExceptionCode())) {
-            //Throw exception code not exist exception
-            throw new ApplicationException(ExceptionCode.UNKNOWN_ERROR);
-        }
-
         return popupCommandRepository.save(entity);
     }
 
